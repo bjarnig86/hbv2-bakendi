@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PETRA</title>
+</head>
+<body>
+
+    <div th:switch="${daycareworkers}">
+        <h2 th:case="null">No Daycare Workers yet!</h2>
+        <div th:case="*">
+            <h2>Daycare Workers</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Location</th>
+                    <th>Location Code</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="daycareworker : ${daycareworkers}">
+                    <td th:text="${daycareworker.fullName}"></td>
+                    <td th:text="${daycareworker.address}"></td>
+                    <td th:text="${daycareworker.location}"></td>
+                    <td th:text="${daycareworker.locationCode}"></td>
+                    <td><a th:href="@{/delete/{id}(id=${daycareworker.id})}">DELETE</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <a th:href="@{/addDaycareworker}">Add a Daycare Worker</a>
+    </div>
+
+</body>
+</html>

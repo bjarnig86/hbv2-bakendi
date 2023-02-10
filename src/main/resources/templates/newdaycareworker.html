@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a new Daycare Worker</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/addDaycareworker}" th:object="${daycareWorker}" method="post">
+    <label for="fullName">Full name</label>
+    <input type="text" th:field="*{fullName}" id="fullName" placeholder="Full name">
+    <span th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></span>
+
+    <label for="address">Address</label>
+    <input type="text" th:field="*{address}" id="address" placeholder="Address">
+    <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+
+    <label for="location">Location</label>
+    <input type="text" th:field="*{location}" id="location" placeholder="Location">
+    <span th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></span>
+
+    <label for="locationCode">Location Code</label>
+    <input type="number" th:field="*{locationCode}" id="locationCode" placeholder="Location Code">
+    <span th:if="${#fields.hasErrors('locationCode')}" th:errors="*{locationCode}"></span>
+
+    <input type="submit" value="Add Daycare Worker">
+</form>
+
+</body>
+</html>
