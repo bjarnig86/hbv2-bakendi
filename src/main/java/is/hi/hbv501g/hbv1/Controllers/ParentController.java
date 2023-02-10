@@ -56,7 +56,6 @@ public class ParentController {
             List<Parent> parents = new ArrayList<Parent>();
 
             parentService.findAll().forEach(parents::add);
-
             if (parents.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }

@@ -50,4 +50,9 @@ public class AuthController {
         }
     }
 
+    @GetMapping("/")
+    public ResponseEntity<Object> root(Model model) {
+        return new ResponseEntity<>("Welcome to PETRA API", HttpStatus.OK);
+    }
+
 }
