@@ -31,6 +31,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
         http.authorizeRequests()
+                .mvcMatchers(HttpMethod.POST, "/api/**").permitAll()
                 .mvcMatchers(HttpMethod.GET,"/api/**").permitAll() // allow all users to access the home pages and the static images directory
                 .anyRequest().authenticated() // all other requests must be authenticated
 //                .and().cors().configurationSource(corsConfigurationSource())

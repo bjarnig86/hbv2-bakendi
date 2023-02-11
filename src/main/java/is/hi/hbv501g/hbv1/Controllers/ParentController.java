@@ -147,19 +147,15 @@ public class ParentController {
         JSONObject newToken;
         try {
             newToken = restTemplate.postForObject("https://dev-xzuj3qsd.eu.auth0.com/oauth/token", tokenEntity, JSONObject.class);
-//            System.out.println("NEW TOKEN!!" + newToken);
+            System.out.println("NEW TOKEN!!" + newToken);
         } catch (Exception e) {
-//            System.out.println("HALLÓ TOKEN FAIL!! \n" + e);
+            System.out.println("HALLÓ TOKEN FAIL!! \n" + e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBearerAuth(newToken.getAsString("access_token"));
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//        headers.setBearerAuth(token);
 
         // Signup logic for auth0
         JSONObject json = new JSONObject();
@@ -171,7 +167,7 @@ public class ParentController {
         HttpEntity<String> entity = new HttpEntity<>(json.toString(), headers);
         String result = "";
         try {
-            result = restTemplate.postForObject("https://dev-xzuj3qsd.eu.auth0.com/v2/users", entity,
+            result = restTemplate.postForObject("https://dev-xzuj3qsd.eu.auth0.com/api/v2/users", entity,
                     String.class);
         } catch (HttpClientErrorException err) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -180,7 +176,7 @@ public class ParentController {
         JsonNode root = objectMapper.readTree(result);
 
         String email = root.path("email").asText();
-        String id = root.path("_id").asText();
+        String id = root.path("user_id").asText();
 
         // Here we assign the role Parent to the new account on auth0.
         // This has to be done after the user is created.
