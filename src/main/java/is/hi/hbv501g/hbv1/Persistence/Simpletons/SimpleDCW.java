@@ -11,19 +11,30 @@ public class SimpleDCW {
     private String email;
     private String address;
     private String location;
+    private String mobile;
     private String locationCode;
     private int freeSpots;
+
+
     private int experienceInYears;
 
-    public SimpleDCW(Long id, String fullName, String email, String address, String location, String locationCode, int freeSpots, int experienceInYears) {
+    public SimpleDCW(Long id, String fullName, String email, String address, String location, String mobile, String locationCode, int freeSpots, int experienceInYears) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.address = address;
         this.location = location;
+        this.mobile = mobile;
         this.locationCode = locationCode;
         this.freeSpots = freeSpots;
         this.experienceInYears = experienceInYears;
+    }
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public Long getId() {
@@ -103,6 +114,7 @@ public class SimpleDCW {
                 dcw.getEmail(),
                 dcw.getAddress(),
                 dcw.getLocation(),
+                dcw.getMobile(),
                 dcw.getLocationCode(),
                 dcw.getFreeSpots(),
                 dcw.getExperienceInYears()

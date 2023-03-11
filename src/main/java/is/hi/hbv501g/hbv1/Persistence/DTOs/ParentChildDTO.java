@@ -17,6 +17,9 @@ public class ParentChildDTO {
         this.parentId = parentId;
     }
 
+    public ParentChildDTO() {
+    }
+
     public String getSsn() {
         return ssn;
     }
