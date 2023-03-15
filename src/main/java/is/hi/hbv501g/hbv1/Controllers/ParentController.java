@@ -243,13 +243,14 @@ public class ParentController {
     @PostMapping("/notifysickleave")
     public ResponseEntity<String> notifySickLeave(@RequestBody Long childId) {
         LocalDate today = LocalDate.now();
+
         try {
             Child c = childService.findChildById(childId);
             c.setSicknessDay(today);
             childService.save(c);
             return new ResponseEntity<>("Success", HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
