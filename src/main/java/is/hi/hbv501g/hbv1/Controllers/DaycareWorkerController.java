@@ -106,6 +106,24 @@ public class DaycareWorkerController {
     }
 
     /**
+     * GET on /daycareworkers/{email}
+     *
+     * @param email daycareworker email
+     * @return daycareworker
+     */
+    @GetMapping("/daycareworker/{email}")
+    public ResponseEntity<DaycareWorker> getDaycareWorkerByEmail(@PathVariable("email") String email) {
+        DaycareWorker dcw;
+        try {
+            dcw = daycareWorkerService.findDaycareWorkerByEmail(email);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>(dcw, HttpStatus.OK);
+    }
+
+    /**
      * GET on /daycareworkerexists/{id}
      *
      * @param ssn daycareworker ssn
@@ -207,7 +225,7 @@ public class DaycareWorkerController {
                 daycareWorkerDTO.getFirstName(),
                 daycareWorkerDTO.getLastName(),
                 daycareWorkerDTO.getMobile(),
-                daycareWorkerDTO.getEmail(),
+                daycareWorkerDTO.getEmail().toLowerCase(),
                 id,
                 daycareWorkerDTO.getExperienceInYears(),
                 daycareWorkerDTO.getAddress(),

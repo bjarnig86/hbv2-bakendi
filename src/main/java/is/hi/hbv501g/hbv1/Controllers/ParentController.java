@@ -202,7 +202,7 @@ public class ParentController {
                 parentDTO.getFirstName(),
                 parentDTO.getLastName(),
                 parentDTO.getMobile(),
-                parentDTO.getEmail(),
+                parentDTO.getEmail().toLowerCase(),
                 id);
 
         try {
