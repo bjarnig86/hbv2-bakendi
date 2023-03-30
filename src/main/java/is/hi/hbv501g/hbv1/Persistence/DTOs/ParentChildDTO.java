@@ -8,9 +8,9 @@ public class ParentChildDTO {
     private String ssn;
     private String firstName;
     private String lastName;
-    private Long parentId;
+    private String parentId;
 
-    public ParentChildDTO(String ssn, String firstName, String lastName, Long parentId) {
+    public ParentChildDTO(String ssn, String firstName, String lastName, String parentId) {
         this.ssn = ssn;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,7 +41,7 @@ public class ParentChildDTO {
         this.lastName = lastName;
     }
 
-    public Long getParentId() {
+    public String getParentId() {
         return parentId;
     }
 }

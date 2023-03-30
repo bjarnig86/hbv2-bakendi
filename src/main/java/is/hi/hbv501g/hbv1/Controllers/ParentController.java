@@ -228,7 +228,8 @@ public class ParentController {
      */
     @PostMapping("/createchild")
     public ResponseEntity<Child> createChild(@RequestBody ParentChildDTO parentChildDTO) {
-        Parent parent = parentService.findParentById(parentChildDTO.getParentId());
+        Long parentId = Long.parseLong(parentChildDTO.getParentId());
+        Parent parent = parentService.findParentById(parentId);
         Child child = new Child(parentChildDTO.getSsn(), parentChildDTO.getFirstName(),
                 parentChildDTO.getLastName());
         try {
