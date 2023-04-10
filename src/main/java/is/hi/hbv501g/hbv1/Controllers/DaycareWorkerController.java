@@ -377,4 +377,19 @@ public class DaycareWorkerController {
         }
         return new ResponseEntity(null, HttpStatus.OK);
     }
+
+    @GetMapping("/daycareworker/{dcwId}/children")
+    public ResponseEntity<List<Child>> getChildByParent(@PathVariable("dcwId") String dcwId) {
+        Long idAsLong = Long.parseLong(dcwId);
+        try {
+            DaycareWorker dcw = daycareWorkerService.findDaycareWorkerById(idAsLong);
+            List<Child> children = childService.findByDaycareWorker(dcw);
+            if (children != null)
+                return new ResponseEntity<>(children, HttpStatus.OK);
+            else
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

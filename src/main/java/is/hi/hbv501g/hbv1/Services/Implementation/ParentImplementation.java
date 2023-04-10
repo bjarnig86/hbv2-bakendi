@@ -33,11 +33,6 @@ public class ParentImplementation implements ParentService {
     }
 
     @Override
-    public boolean findBySsn(String ssn) {
-        return parentRepository.findBySsn(ssn).isPresent();
-    }
-
-    @Override
     public Parent findParentByEmail(String email) {
         return parentRepository.findParentByEmail(email);
     }
@@ -45,6 +40,11 @@ public class ParentImplementation implements ParentService {
     @Override
     public Parent findParentByAuth0Id(String id) {
         return parentRepository.findParentByAuth0Id(id);
+    }
+
+    @Override
+    public boolean findBySsn(String ssn) {
+        return false;
     }
 
     @Override
