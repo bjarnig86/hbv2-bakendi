@@ -13,7 +13,9 @@ import java.util.List;
 public interface ChildService {
     Child save(Child child);
     void delete(Child child);
+
     List<Child> findByParents(Parent parent);
+    List<Child> getUnregisteredChildrenByParent(Parent parent);
     List<Child> findByDaycareWorker(DaycareWorker daycareWorker);
     Child findChildById(Long id);
     DayReport findByChild(Child child);

@@ -69,4 +69,9 @@ public class ChildServiceImplementation implements ChildService {
     public Child findChildById(Long id) {
         return childRepository.findChildById(id);
     }
+
+    @Override
+    public List<Child> getUnregisteredChildrenByParent(Parent parent) {
+        return childRepository.getUnregisteredChildrenByParent(parent);
+    }
 }

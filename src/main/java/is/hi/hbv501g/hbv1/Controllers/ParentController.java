@@ -269,4 +269,19 @@ public class ParentController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/parent/{parentId}/unregistered_children")
+    public ResponseEntity<List<Child>> getUnregisteredChildrenByParents(@PathVariable("parentId") String parentId) {
+        Long idAsLong = Long.parseLong(parentId);
+        try {
+            Parent parent = parentService.findParentById(idAsLong);
+            List<Child> children = childService.getUnregisteredChildrenByParent(parent);
+            if (children != null)
+                return new ResponseEntity<>(children, HttpStatus.OK);
+            else
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
