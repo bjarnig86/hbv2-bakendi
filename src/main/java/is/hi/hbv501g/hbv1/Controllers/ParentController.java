@@ -124,6 +124,21 @@ public class ParentController {
         }
     }
 
+    @GetMapping("/getdayreports/{id}")
+    public ResponseEntity<List<DayReport>> getAllDayReports(@PathVariable("id") String id) {
+        Long idAsLong = Long.parseLong(id);
+        try {
+            Child child = childService.findChildById(idAsLong);
+            List<DayReport> dayReports = childService.getAllDayReportsByChild(child);
+            if (dayReports != null)
+                return new ResponseEntity<>(dayReports, HttpStatus.OK);
+            else
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     /**
      * POST on /createparent
      * 
