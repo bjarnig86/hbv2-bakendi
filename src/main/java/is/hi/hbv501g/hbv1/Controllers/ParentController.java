@@ -256,12 +256,12 @@ public class ParentController {
         }
     }
 
-    @PostMapping("/notifysickleave")
-    public ResponseEntity<String> notifySickLeave(@RequestBody Long childId) {
+    @PostMapping("/notifysickleave/{id}")
+    public ResponseEntity<String> notifySickLeave(@PathVariable("id") String childId) {
         LocalDate today = LocalDate.now();
-
+        Long childIdAsLong = Long.parseLong(childId);
         try {
-            Child c = childService.findChildById(childId);
+            Child c = childService.findChildById(childIdAsLong);
             c.setSicknessDay(today);
             childService.save(c);
             return new ResponseEntity<>("Success", HttpStatus.CREATED);
