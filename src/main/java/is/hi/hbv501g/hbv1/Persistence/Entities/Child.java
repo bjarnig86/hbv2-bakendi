@@ -65,6 +65,28 @@ public class Child {
     @JsonBackReference
     private Parent parent;
 
+    @JsonProperty("parentName")
+    @Nullable
+    public String getParentName() {
+        Parent parent = this.getParent();
+        return parent != null ? parent.getFirstName() + " " + parent.getLastName() : null;
+    }
+
+    @JsonProperty("parentEmail")
+    @Nullable
+    public String getParentEmail() {
+        Parent parent = this.getParent();
+        return parent != null ? parent.getEmail() : null;
+    }
+
+    @JsonProperty("parentMobile")
+    @Nullable
+    public String getParentMobile() {
+        Parent parent = this.getParent();
+        return parent != null ? parent.getMobile() : null;
+    }
+
+
     @OneToMany(mappedBy = "child", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<DayReport> dayReports = new ArrayList<>();
