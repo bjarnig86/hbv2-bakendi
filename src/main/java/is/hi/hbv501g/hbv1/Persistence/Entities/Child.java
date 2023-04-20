@@ -3,6 +3,8 @@ package is.hi.hbv501g.hbv1.Persistence.Entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -36,6 +38,28 @@ public class Child {
     @ManyToOne(fetch=FetchType.LAZY)
     @JsonBackReference
     private DaycareWorker daycareWorker;
+
+    @JsonProperty("dcwName")
+    @Nullable
+    public String getDaycareWorkerName() {
+        DaycareWorker daycareWorker = this.getDaycareWorker();
+        return daycareWorker != null ? daycareWorker.getFullName() : null;
+    }
+
+    @JsonProperty("dcwEmail")
+    @Nullable
+    public String getDaycareWorkerEmail() {
+        DaycareWorker daycareWorker = this.getDaycareWorker();
+        return daycareWorker != null ? daycareWorker.getEmail() : null;
+    }
+
+    @JsonProperty("dcwMobile")
+    @Nullable
+    public String getDaycareWorkerMobile() {
+        DaycareWorker daycareWorker = this.getDaycareWorker();
+        return daycareWorker != null ? daycareWorker.getMobile() : null;
+    }
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference

@@ -6,6 +6,7 @@ import is.hi.hbv501g.hbv1.Persistence.DTOs.ParentChildDTO;
 import is.hi.hbv501g.hbv1.Persistence.DTOs.ParentDTO;
 import is.hi.hbv501g.hbv1.Persistence.Entities.Child;
 import is.hi.hbv501g.hbv1.Persistence.Entities.DayReport;
+import is.hi.hbv501g.hbv1.Persistence.Entities.DaycareWorker;
 import is.hi.hbv501g.hbv1.Persistence.Entities.Parent;
 import is.hi.hbv501g.hbv1.Services.ChildService;
 import is.hi.hbv501g.hbv1.Services.ParentService;
