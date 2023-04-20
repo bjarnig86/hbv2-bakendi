@@ -26,6 +26,8 @@ import is.hi.hbv501g.hbv1.Services.DaycareWorkerService;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import static java.util.Collections.emptyList;
+
 /**
  * Controller for Daycareworker logic.
  */
@@ -77,7 +79,7 @@ public class DaycareWorkerController {
                 });
 
             if (dcws.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(emptyList(), HttpStatus.OK);
             }
         } catch (Exception e) {
             System.out.println(e);
